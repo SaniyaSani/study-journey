@@ -1,0 +1,783 @@
+/* ==========================================================================
+   STATION SYSTEM — primitives (see design/station.tsx)
+   ========================================================================== */
+
+/* ---------- platform guidance sign ---------- */
+.psign {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: var(--r-panel);
+  font-family: var(--f-sign);
+  line-height: 1.1;
+  box-shadow: var(--shadow-mount);
+}
+.psign--white {
+  background: var(--st-sign);
+  color: var(--st-sign-ink);
+  border-bottom: 4px solid var(--st-green);
+}
+.psign--green {
+  background: var(--st-green);
+  color: #fff;
+}
+.psign--dark {
+  background: var(--st-board);
+  color: var(--st-led-white);
+  border-bottom: 3px solid var(--st-green);
+}
+.psign--yellow {
+  background: var(--st-exit-yellow);
+  color: var(--st-sign-ink);
+}
+.psign-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 3px;
+  background: var(--st-sign-ink);
+  color: var(--st-sign);
+  flex: none;
+}
+.psign--green .psign-icon,
+.psign--dark .psign-icon {
+  background: var(--st-sign);
+  color: var(--st-sign-ink);
+}
+.psign-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.psign-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  font-size: 1.15em;
+  letter-spacing: 0.06em;
+}
+.psign-en {
+  font-weight: 600;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+}
+.psign-code {
+  margin-left: auto;
+  font-family: var(--f-sign-cond);
+  font-weight: 700;
+}
+.sign-arrow {
+  flex: none;
+}
+
+/* ---------- station name board (駅名標) ---------- */
+.snb {
+  display: flex;
+  flex-direction: column;
+  background: var(--st-sign);
+  color: var(--st-sign-ink);
+  border-radius: var(--r-panel);
+  box-shadow: var(--shadow-mount);
+  overflow: hidden;
+  margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+}
+.snb-face {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  padding: 14px 18px 10px;
+}
+.snb-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+.snb-kana {
+  font-family: var(--f-gothic);
+  font-size: 0.72em;
+  letter-spacing: 0.3em;
+}
+.snb-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+}
+.snb-en {
+  font-family: var(--f-sign);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+.snb-note {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-family: var(--f-sign-cond);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--st-steel);
+}
+.snb-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 34px;
+  background: var(--line, var(--st-green));
+  color: #fff;
+  font-family: var(--f-sign);
+  font-weight: 600;
+}
+.snb-prev,
+.snb-next {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  min-width: 0;
+}
+.snb-next {
+  justify-content: flex-end;
+  text-align: right;
+  border-left: 2px solid rgba(255, 255, 255, 0.55);
+}
+.snb-adj {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  min-width: 0;
+}
+.snb-adj span {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+.snb-adj small {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- departure board ---------- */
+.dboard {
+  position: relative;
+  background: var(--st-board);
+  color: var(--st-led-white);
+  border: var(--b-frame) solid var(--st-board-edge);
+  border-radius: var(--r-panel);
+  box-shadow:
+    0 0 0 1px #3a3f43,
+    0 14px 30px -18px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+.dboard::before {
+  /* LED matrix dots */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--led-dots);
+  background-size: 3px 3px;
+}
+.dboard-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: 8px 14px;
+  background: var(--st-green);
+  color: #fff;
+}
+.dboard-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  font-size: 1rem;
+}
+.dboard-title-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  font-size: 1.15rem;
+}
+.dboard-title-en {
+  font-family: var(--f-sign);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.dboard-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background: var(--st-board);
+  color: var(--st-led-amber);
+  font-family: var(--f-led);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+}
+.dboard-cols {
+  display: grid;
+  grid-template-columns: var(--board-cols, 4.6rem minmax(0, 1fr) 6rem 5rem 6.4rem);
+  gap: 10px;
+  padding: 5px 14px;
+  border-bottom: 1px solid var(--st-board-3);
+  background: var(--st-board-2);
+  color: var(--st-gray-2);
+  font-size: 0.7rem;
+}
+.dboard-cols > span {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.dboard-cols small {
+  font-family: var(--f-sign);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  opacity: 0.8;
+}
+.dboard-body {
+  position: relative;
+}
+.dboard-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 6px 14px;
+  border-top: 1px solid var(--st-board-3);
+  font-family: var(--f-led);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--st-gray-2);
+}
+.led {
+  font-family: var(--f-led);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.led--amber {
+  color: var(--st-led-amber);
+  text-shadow: 0 0 6px rgba(255, 180, 58, 0.35);
+}
+.led--green {
+  color: var(--st-led-green);
+  text-shadow: 0 0 6px rgba(63, 212, 126, 0.3);
+}
+.led--red {
+  color: var(--st-led-red);
+  text-shadow: 0 0 6px rgba(255, 80, 64, 0.35);
+}
+.led--orange {
+  color: var(--st-led-orange);
+}
+.led--white {
+  color: var(--st-led-white);
+}
+
+/* ---------- route map board ---------- */
+.rmap {
+  --dot-size: 22px;
+  position: relative;
+  background: var(--st-sign);
+  color: var(--st-sign-ink);
+  border-radius: var(--r-panel);
+  box-shadow: var(--shadow-mount);
+  padding: 18px 16px 14px;
+  overflow-x: auto;
+}
+.rmap-stops {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(96px, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rmap-stop {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.rmap-stop::before {
+  /* the line between stops (per segment, so it can show passed sections) */
+  content: "";
+  position: absolute;
+  top: calc(var(--dot-size) / 2 - 4px);
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--line);
+}
+.rmap-stop:first-child::before {
+  left: 50%;
+}
+.rmap-stop:last-child::before {
+  right: 50%;
+}
+.rmap-stop.passed::before {
+  background: color-mix(in srgb, var(--line) 35%, #d9d9d4);
+}
+.rmap-hit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: inherit;
+  text-align: center;
+  font: inherit;
+}
+button.rmap-hit {
+  cursor: pointer;
+}
+.rmap-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--dot, var(--line));
+  transition: transform var(--dur-quick);
+}
+.rmap-code {
+  position: absolute;
+  top: calc(-1 * var(--dot-size) + 2px);
+  font-family: var(--f-sign-cond);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--st-steel);
+  white-space: nowrap;
+}
+.rmap-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.rmap-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+}
+.rmap-en {
+  font-family: var(--f-sign);
+  font-weight: 600;
+  font-size: 0.74rem;
+}
+.rmap-note {
+  font-family: var(--f-sign);
+  font-size: 0.64rem;
+  color: var(--st-steel);
+}
+.rmap-stop.current .rmap-dot {
+  transform: scale(1.25);
+  background: var(--st-led-red);
+  border-color: #fff;
+  box-shadow: 0 0 0 3px var(--st-led-red);
+}
+.rmap-here {
+  font-family: var(--f-sign-cond);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  padding: 1px 5px;
+  background: var(--st-led-red);
+  color: #fff;
+  white-space: nowrap;
+}
+button.rmap-hit:hover .rmap-dot,
+button.rmap-hit:focus-visible .rmap-dot {
+  transform: scale(1.2);
+}
+button.rmap-hit:hover .rmap-en {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+/* vertical route maps (narrow screens or explicit) */
+.rmap--v .rmap-stops {
+  grid-auto-flow: row;
+  grid-auto-rows: auto;
+  grid-auto-columns: auto;
+}
+.rmap--v .rmap-stop {
+  justify-content: flex-start;
+  min-height: 52px;
+}
+.rmap--v .rmap-stop::before {
+  left: calc(var(--dot-size) / 2 - 4px);
+  right: auto;
+  width: 8px;
+  height: auto;
+  top: 0;
+  bottom: 0;
+}
+.rmap--v .rmap-stop:first-child::before {
+  left: calc(var(--dot-size) / 2 - 4px);
+  top: 50%;
+}
+.rmap--v .rmap-stop:last-child::before {
+  right: auto;
+  bottom: 50%;
+}
+.rmap--v .rmap-hit {
+  flex-direction: row;
+  text-align: left;
+  gap: 12px;
+  padding: 6px 0;
+}
+.rmap--v .rmap-code {
+  position: static;
+}
+
+/* ---------- paper ticket ---------- */
+.ticket {
+  position: relative;
+  display: flex;
+  background-color: var(--st-paper);
+  background-image:
+    var(--paper-fibre),
+    repeating-linear-gradient(-45deg, rgba(61, 111, 143, 0.045) 0 2px, transparent 2px 7px);
+  color: var(--st-paper-ink);
+  border-radius: var(--r-ticket);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 0 0 1px var(--st-paper-edge),
+    0 12px 26px -16px rgba(40, 30, 10, 0.55);
+}
+.ticket--white {
+  background-color: #fbfaf6;
+}
+.ticket--green {
+  background-color: #e5f1e6;
+}
+.ticket-main {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 18px;
+}
+.ticket-kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--st-paper-print);
+  color: var(--st-paper-print);
+  font-family: var(--f-sign);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ticket-kicker-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin-right: 10px;
+  font-size: 1rem;
+  text-transform: none;
+}
+.ticket-kicker > span:first-child {
+  white-space: nowrap;
+}
+.ticket-serial {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+.ticket-stub {
+  position: relative;
+  flex: none;
+  width: clamp(84px, 22%, 130px);
+  padding: 16px 12px;
+  border-left: 2px dashed var(--st-paper-edge);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.ticket--stub::before,
+.ticket--stub::after {
+  /* perforation notches */
+  content: "";
+  position: absolute;
+  right: calc(clamp(84px, 22%, 130px) - 9px);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--notch-bg, var(--st-concourse));
+}
+.ticket--stub::before {
+  top: -9px;
+}
+.ticket--stub::after {
+  bottom: -9px;
+}
+.ticket-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ticket-field > .tf-label {
+  font-family: var(--f-sign);
+  font-weight: 700;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--st-paper-print);
+}
+.ticket-stamp {
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--st-stamp);
+  border-radius: 50%;
+  color: var(--st-stamp);
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  font-size: 0.72rem;
+  line-height: 1.1;
+  text-align: center;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+}
+
+/* ---------- station numbering chip ---------- */
+.schip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 3px solid var(--chip);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--st-sign-ink);
+  font-family: var(--f-sign-cond);
+  font-weight: 700;
+  line-height: 0.95;
+}
+.schip-line {
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+}
+.schip-num {
+  font-size: 0.95rem;
+}
+.schip--s {
+  width: 26px;
+  height: 26px;
+  border-width: 2px;
+}
+.schip--s .schip-line {
+  font-size: 0.48rem;
+}
+.schip--s .schip-num {
+  font-size: 0.74rem;
+}
+.schip--l {
+  width: 52px;
+  height: 52px;
+  border-width: 4px;
+  border-radius: 7px;
+}
+.schip--l .schip-line {
+  font-size: 0.78rem;
+}
+.schip--l .schip-num {
+  font-size: 1.45rem;
+}
+
+/* ---------- line / service badge ---------- */
+.lbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px 2px 2px;
+  background: #fff;
+  color: var(--st-sign-ink);
+  border: 1px solid var(--st-gray-2);
+  border-radius: 2px;
+  font-family: var(--f-sign);
+  font-weight: 600;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.lbadge-swatch {
+  width: 14px;
+  align-self: stretch;
+  background: var(--badge);
+}
+.lbadge-ja {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+}
+.lbadge--service {
+  padding: 1px 8px;
+  background: var(--badge);
+  color: #fff;
+  border-color: var(--badge);
+  letter-spacing: 0.04em;
+}
+.lbadge--service .lbadge-swatch {
+  display: none;
+}
+
+/* ---------- track number ---------- */
+.track {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.track-n {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 4px;
+  border-radius: 50%;
+  background: var(--st-led-white);
+  color: var(--st-sign-ink);
+  font-family: var(--f-sign-cond);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.track-l {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-size: 0.6rem;
+}
+.track-l small {
+  font-family: var(--f-sign);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+/* ---------- service notice ---------- */
+.notice {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  background: var(--st-sign);
+  color: var(--st-sign-ink);
+  box-shadow: var(--shadow-mount);
+  font-size: 0.86rem;
+}
+.notice-tag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  padding: 6px 12px;
+  background: var(--st-green);
+  color: #fff;
+  line-height: 1.1;
+}
+.notice-tag span {
+  font-family: var(--f-heavy);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+.notice-tag small {
+  font-family: var(--f-sign);
+  font-weight: 700;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.notice-body {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 8px 14px;
+  min-width: 0;
+}
+.notice--warn .notice-tag {
+  background: var(--st-exit-yellow);
+  color: var(--st-sign-ink);
+}
+.notice--severe .notice-tag {
+  background: var(--st-led-red);
+}
+.notice--severe {
+  border-left: 0;
+}
+
+/* ---------- ticket-machine keys ---------- */
+.key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border: 1px solid #b9bbb8;
+  border-radius: 4px;
+  background: linear-gradient(#fff, #ecece8);
+  color: var(--st-sign-ink);
+  font-family: var(--f-sign);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  box-shadow: var(--shadow-key);
+  transition:
+    transform var(--dur-quick),
+    box-shadow var(--dur-quick);
+}
+.key:hover {
+  border-color: var(--st-green);
+}
+.key:active,
+.key[aria-pressed="true"] {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  background: var(--st-green);
+  border-color: var(--st-green-dark);
+  color: #fff;
+}
+.key:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

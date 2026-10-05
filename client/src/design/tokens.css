@@ -1,0 +1,132 @@
+/*
+ * 電車で旅 — design tokens: STATION SYSTEM
+ * The site is wrapped in the visual language of Japanese railway stations:
+ * departure boards (charcoal + LED), platform signage (white panels, black type, green line),
+ * route map boards (line colours, station dots) and paper tickets (cream, perforations).
+ * Inspired by — not copying — railway signage: no operator logos or marks are used.
+ */
+:root {
+  /* ---------- station palette ---------- */
+  /* boards */
+  --st-board: #17191b; /* departure board face */
+  --st-board-2: #1f2225; /* board rows */
+  --st-board-3: #2a2e31; /* row separators, frames */
+  --st-board-edge: #0c0d0e;
+  --st-led-amber: #ffb43a; /* times, digits */
+  --st-led-white: #f3f3ee; /* destinations */
+  --st-led-green: #3fd47e; /* on time */
+  --st-led-red: #ff5040; /* delays, cancellations */
+  --st-led-orange: #ff8a1f;
+
+  /* signage */
+  --st-sign: #fbfbf8; /* sign panel */
+  --st-sign-ink: #121314; /* sign type */
+  --st-green: #188a4a; /* main accent — line green */
+  --st-green-dark: #0f6b38;
+  --st-green-tint: #e3f2e8;
+  --st-exit-yellow: #f6c40c; /* exit / caution signs (used sparingly) */
+
+  /* concourse */
+  --st-concourse: #e8e7e2; /* page floor */
+  --st-concourse-2: #dcdbd5;
+  --st-gray: #8a8f93;
+  --st-gray-2: #c6c8c7;
+  --st-steel: #4b5257;
+
+  /* tickets */
+  --st-paper: #f3ead3; /* ticket stock */
+  --st-paper-2: #ebdfc2;
+  --st-paper-edge: #d7c7a1;
+  --st-paper-ink: #2a2620;
+  --st-paper-print: #3d6f8f; /* blue-grey security print */
+  --st-stamp: #c8372d; /* red stamp ink */
+
+  /* route lines (map boards) */
+  --line-green: #1d9a50;
+  --line-orange: #f0831e;
+  --line-blue: #1f78c8;
+  --line-sky: #31a9d8;
+  --line-red: #d5352b;
+  --line-purple: #8a4fb3;
+  --line-yellow: #e7b416;
+
+  /* ---------- legacy tokens remapped onto the station palette ---------- */
+  --c-petrol: var(--st-board-2);
+  --c-petrol-2: #24282b;
+  --c-petrol-3: #2f3438;
+  --c-abyss: var(--st-board);
+  --c-mint: var(--st-led-white);
+  --c-mint-2: #f6f5ef;
+  --c-mint-dim: #a6abae;
+  --c-shoplight: var(--st-led-amber);
+  --c-signal: var(--st-led-red);
+  --c-sunset: var(--st-led-orange);
+  --c-ink: var(--st-sign-ink);
+  --c-rule: rgba(243, 243, 238, 0.18);
+  --c-rule-strong: rgba(243, 243, 238, 0.42);
+  --c-rule-ink: rgba(18, 19, 20, 0.22);
+  --c-text-dim: rgba(243, 243, 238, 0.66);
+
+  /* ---------- type ---------- */
+  --f-sign: "Barlow", "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --f-sign-cond: "Barlow Condensed", "Barlow", "Arial Narrow", sans-serif;
+  --f-led: "DotGothic16", "IBM Plex Mono", ui-monospace, monospace;
+  --f-poster: "Dela Gothic One", "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  --f-gothic:
+    "Barlow", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic",
+    "Noto Sans JP", "Noto Sans CJK JP", Meiryo, system-ui, sans-serif;
+  --f-heavy: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+  --f-mincho: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --t-hero: clamp(7rem, 22vw, 23rem);
+  --t-display: clamp(2.6rem, 6vw, 5.4rem);
+  --t-h1: clamp(1.8rem, 3vw, 2.6rem);
+  --t-h2: clamp(1.3rem, 2vw, 1.75rem);
+  --t-body: 1rem;
+  --t-small: 0.875rem;
+  --t-label: 0.68rem;
+  --t-micro: 0.6rem;
+  --track-label: 0.16em;
+  --track-wide: 0.26em;
+
+  /* ---------- space ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 72px;
+  --s-9: 112px;
+  --gutter: clamp(16px, 4vw, 56px);
+
+  /* ---------- borders: rectangular, framed, mounted ---------- */
+  --b-hair: 1px;
+  --b-frame: 3px;
+  --r-panel: 2px;
+  --r-field: 2px;
+  --r-ticket: 6px;
+  --shadow-mount:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 2px 0 rgba(0, 0, 0, 0.18),
+    0 10px 24px -14px rgba(0, 0, 0, 0.45);
+  --shadow-key: 0 3px 0 rgba(0, 0, 0, 0.28);
+
+  /* ---------- texture ---------- */
+  --grain-opacity: 0.12;
+  --grain-opacity-photo: 0.2;
+  --halftone-opacity: 0.1;
+  --vignette: radial-gradient(ellipse at 50% 45%, transparent 50%, rgba(10, 11, 12, 0.55) 100%);
+  --paper-fibre: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0 0.25  0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+  --led-dots: radial-gradient(circle, rgba(255, 255, 255, 0.035) 0.8px, transparent 1.1px);
+
+  /* ---------- motion ---------- */
+  --ease-slow: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-quick: 140ms;
+  --dur-base: 320ms;
+  --dur-slow: 1000ms;
+  --dur-tunnel: 1400ms;
+
+  color-scheme: light;
+}
