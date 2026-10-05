@@ -1,0 +1,364 @@
+{
+  "$comment": "Curated route footage. Only add footage that may be embedded/hosted. Real footage stays 'needs-calibration' until station timestamps are measured with #/admin/video-calibration. See docs/VIDEO_SYNC.md.",
+  "videos": [
+    {
+      "id": "demo-sakuraura-outbound-illustrated",
+      "provider": "illustrated",
+      "title": "Sakuraura Coast Line — illustrated cab view (outbound, demo)",
+      "creator": "Study Journey (generated illustration)",
+      "sourceUrl": "https://example.invalid/demo",
+      "licenseStatus": "demo",
+      "embedStatus": "not-applicable",
+      "railwayOperator": "Study Journey Demo Railway",
+      "lineIds": ["demo:SAKURA"],
+      "lineNames": ["Sakuraura Coast"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Minato-Chūō",
+        "to": "Takaneguchi"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "videoEndSeconds": 2767,
+      "durationSeconds": 2767,
+      "recordingPeriod": "sunset",
+      "sceneryTags": ["coast", "demo"],
+      "calibration": "calibrated",
+      "stationMarkers": [
+        {
+          "stationId": "demo:SK01",
+          "stationName": "Minato-Chūō",
+          "videoTime": 0,
+          "arrivalTime": 0,
+          "departureTime": 15
+        },
+        {
+          "stationId": "demo:SK02",
+          "stationName": "Shiomizaka",
+          "videoTime": 305,
+          "arrivalTime": 305,
+          "departureTime": 340
+        },
+        {
+          "stationId": "demo:SK03",
+          "stationName": "Matsukaze",
+          "videoTime": 685,
+          "arrivalTime": 685,
+          "departureTime": 720
+        },
+        {
+          "stationId": "demo:SK04",
+          "stationName": "Tōdaishita",
+          "videoTime": 1100,
+          "arrivalTime": 1100,
+          "departureTime": 1135
+        },
+        {
+          "stationId": "demo:SK05",
+          "stationName": "Sakuraura",
+          "videoTime": 1390,
+          "arrivalTime": 1390,
+          "departureTime": 1425
+        },
+        {
+          "stationId": "demo:SK06",
+          "stationName": "Hoshimidai",
+          "videoTime": 1835,
+          "arrivalTime": 1835,
+          "departureTime": 1870
+        },
+        {
+          "stationId": "demo:SK07",
+          "stationName": "Kirinosawa",
+          "videoTime": 2242,
+          "arrivalTime": 2242,
+          "departureTime": 2277
+        },
+        {
+          "stationId": "demo:SK08",
+          "stationName": "Takaneguchi",
+          "videoTime": 2747,
+          "arrivalTime": 2747,
+          "departureTime": 2747
+        }
+      ],
+      "notes": "Fictional demo line drawn by the app. Not real footage."
+    },
+    {
+      "id": "demo-sakuraura-inbound-illustrated",
+      "provider": "illustrated",
+      "title": "Sakuraura Coast Line — illustrated cab view (inbound, demo)",
+      "creator": "Study Journey (generated illustration)",
+      "sourceUrl": "https://example.invalid/demo",
+      "licenseStatus": "demo",
+      "embedStatus": "not-applicable",
+      "railwayOperator": "Study Journey Demo Railway",
+      "lineIds": ["demo:SAKURA"],
+      "lineNames": ["Sakuraura Coast"],
+      "direction": "inbound",
+      "coverage": {
+        "from": "Takaneguchi",
+        "to": "Minato-Chūō"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "videoEndSeconds": 2774,
+      "durationSeconds": 2774,
+      "recordingPeriod": "sunset",
+      "sceneryTags": ["coast", "demo"],
+      "calibration": "calibrated",
+      "stationMarkers": [
+        {
+          "stationId": "demo:SK08",
+          "stationName": "Takaneguchi",
+          "videoTime": 0,
+          "arrivalTime": 0,
+          "departureTime": 15
+        },
+        {
+          "stationId": "demo:SK07",
+          "stationName": "Kirinosawa",
+          "videoTime": 477,
+          "arrivalTime": 477,
+          "departureTime": 512
+        },
+        {
+          "stationId": "demo:SK06",
+          "stationName": "Hoshimidai",
+          "videoTime": 883,
+          "arrivalTime": 883,
+          "departureTime": 918
+        },
+        {
+          "stationId": "demo:SK05",
+          "stationName": "Sakuraura",
+          "videoTime": 1346,
+          "arrivalTime": 1346,
+          "departureTime": 1381
+        },
+        {
+          "stationId": "demo:SK04",
+          "stationName": "Tōdaishita",
+          "videoTime": 1617,
+          "arrivalTime": 1617,
+          "departureTime": 1652
+        },
+        {
+          "stationId": "demo:SK03",
+          "stationName": "Matsukaze",
+          "videoTime": 2053,
+          "arrivalTime": 2053,
+          "departureTime": 2088
+        },
+        {
+          "stationId": "demo:SK02",
+          "stationName": "Shiomizaka",
+          "videoTime": 2410,
+          "arrivalTime": 2410,
+          "departureTime": 2445
+        },
+        {
+          "stationId": "demo:SK01",
+          "stationName": "Minato-Chūō",
+          "videoTime": 2754,
+          "arrivalTime": 2754,
+          "departureTime": 2754
+        }
+      ],
+      "notes": "Fictional demo line drawn by the app. Not real footage."
+    },
+    {
+      "id": "jr-yokosuka-tokyo-kurihama-e217-sunset",
+      "provider": "youtube",
+      "videoId": "IchVEzYptyI",
+      "title": "【4K60fps前面展望】夕焼けのJR横須賀線E217系「普通」東京～久里浜(速度計付,MAX120km/h,2020年版)",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=IchVEzYptyI",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR East",
+      "lineIds": [],
+      "lineNames": ["Yokosuka"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Tokyo",
+        "to": "Kurihama"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["urban", "coast", "sunset"],
+      "recordingPeriod": "sunset",
+      "notes": "Covers Tokyo → Kamakura. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-yokosuka-yokosuka-tokyo-e217",
+      "provider": "youtube",
+      "videoId": "rBBPgu6a4ek",
+      "title": "【4K HDR/60fps 前面展望】横須賀線/普通（横須賀→東京）@E217系",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=rBBPgu6a4ek",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR East",
+      "lineIds": [],
+      "lineNames": ["Yokosuka"],
+      "direction": "inbound",
+      "coverage": {
+        "from": "Yokosuka",
+        "to": "Tokyo"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["urban", "coast"],
+      "notes": "Covers Kamakura → Tokyo. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-chuo-tokyo-takao-special-rapid",
+      "provider": "youtube",
+      "videoId": "mzjNZW40EeA",
+      "title": "【4K前面展望】中央特快 東京→高尾 Chuo Line Special Rapid Service Tokyo→Takao",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=mzjNZW40EeA",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR East",
+      "lineIds": [],
+      "lineNames": ["Chuo"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Tokyo",
+        "to": "Takao"
+      },
+      "serviceTypes": ["special rapid"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["urban", "suburban"],
+      "notes": "Covers Shinjuku → Takao. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-chuo-takao-tokyo-special-rapid-hdr",
+      "provider": "youtube",
+      "videoId": "4DzDCqG2Gdg",
+      "title": "【4K HDR/60fps 前面展望】中央快速線/中央特快（高尾→東京）@E233系0番台",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=4DzDCqG2Gdg",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR East",
+      "lineIds": [],
+      "lineNames": ["Chuo"],
+      "direction": "inbound",
+      "coverage": {
+        "from": "Takao",
+        "to": "Tokyo"
+      },
+      "serviceTypes": ["special rapid"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["suburban", "urban"],
+      "notes": "Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-sagano-kyoto-kameoka-local",
+      "provider": "youtube",
+      "videoId": "la8lDdFpfsg",
+      "title": "【4K HDR/60fps 前面展望】嵯峨野線/普通（京都→亀岡）@223系6000番台",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=la8lDdFpfsg",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR West",
+      "lineIds": [],
+      "lineNames": ["Sagano", "San'in"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Kyoto",
+        "to": "Kameoka"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["city", "river", "gorge"],
+      "notes": "Covers Kyoto → Saga-Arashiyama. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-sagano-kameoka-kyoto-local",
+      "provider": "youtube",
+      "videoId": "HYKL9kG2cdE",
+      "title": "【前面展望】JR嵯峨野線/E普通(亀岡→京都) @223系2500番台",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=HYKL9kG2cdE",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR West",
+      "lineIds": [],
+      "lineNames": ["Sagano", "San'in"],
+      "direction": "inbound",
+      "coverage": {
+        "from": "Kameoka",
+        "to": "Kyoto"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["gorge", "city"],
+      "notes": "Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-ito-izukyu-atami-shimoda",
+      "provider": "youtube",
+      "videoId": "xMFXlcBfFSE",
+      "title": "【4K前面展望】JR伊東線・伊豆急行伊豆急行線（熱海～伊豆急下田）",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=xMFXlcBfFSE",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR East / Izukyu",
+      "lineIds": [],
+      "lineNames": ["Ito", "Izu Kyuko"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Atami",
+        "to": "Izukyū-Shimoda"
+      },
+      "serviceTypes": ["local"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["coast", "sea"],
+      "notes": "Covers Atami → Itō. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    },
+    {
+      "id": "jr-takayama-hida14-toyama-takayama",
+      "provider": "youtube",
+      "videoId": "H3aiIcm_pBc",
+      "title": "高山本線 Vol.23 ～「ひだ14号」前面展望（富山→高山）～",
+      "creator": "See source (channel not yet recorded)",
+      "sourceUrl": "https://www.youtube.com/watch?v=H3aiIcm_pBc",
+      "licenseStatus": "platform-embed",
+      "embedStatus": "unverified",
+      "railwayOperator": "JR West / JR Central",
+      "lineIds": [],
+      "lineNames": ["Takayama"],
+      "direction": "outbound",
+      "coverage": {
+        "from": "Toyama",
+        "to": "Takayama"
+      },
+      "serviceTypes": ["limited express"],
+      "videoStartSeconds": 0,
+      "calibration": "needs-calibration",
+      "stationMarkers": [],
+      "sceneryTags": ["mountain", "river"],
+      "notes": "Limited express Hida 14. Found via web search (title as listed on YouTube). Embedding, channel name, intro length and station timestamps must be verified in the calibration tool before use."
+    }
+  ]
+}

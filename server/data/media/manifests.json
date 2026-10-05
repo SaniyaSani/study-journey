@@ -1,0 +1,151 @@
+{
+  "$comment": "Route media manifests. Only add videos you are allowed to embed or host. See docs/ROUTE_MEDIA.md.",
+  "manifests": [
+    {
+      "routeId": "demo:SAKURA",
+      "operatorId": "demo:SJDEMO",
+      "direction": "0",
+      "originStationId": "demo:SK01",
+      "destinationStationId": "demo:SK08",
+      "video": {
+        "provider": "illustrated",
+        "title": "Sakuraura Coast Line — illustrated cab view (outbound, demo)",
+        "creator": "Study Journey (generated illustration)",
+        "sourceUrl": "https://example.invalid/demo",
+        "licenseStatus": "demo",
+        "attributionRequired": false,
+        "durationSeconds": 2767
+      },
+      "stationMarkers": [
+        {
+          "stationId": "demo:SK01",
+          "videoTimeSeconds": 0,
+          "arrivalFrameSeconds": 0,
+          "departureFrameSeconds": 15
+        },
+        {
+          "stationId": "demo:SK02",
+          "videoTimeSeconds": 305,
+          "arrivalFrameSeconds": 305,
+          "departureFrameSeconds": 340
+        },
+        {
+          "stationId": "demo:SK03",
+          "videoTimeSeconds": 685,
+          "arrivalFrameSeconds": 685,
+          "departureFrameSeconds": 720
+        },
+        {
+          "stationId": "demo:SK04",
+          "videoTimeSeconds": 1100,
+          "arrivalFrameSeconds": 1100,
+          "departureFrameSeconds": 1135
+        },
+        {
+          "stationId": "demo:SK05",
+          "videoTimeSeconds": 1390,
+          "arrivalFrameSeconds": 1390,
+          "departureFrameSeconds": 1425
+        },
+        {
+          "stationId": "demo:SK06",
+          "videoTimeSeconds": 1835,
+          "arrivalFrameSeconds": 1835,
+          "departureFrameSeconds": 1870
+        },
+        {
+          "stationId": "demo:SK07",
+          "videoTimeSeconds": 2242,
+          "arrivalFrameSeconds": 2242,
+          "departureFrameSeconds": 2277
+        },
+        {
+          "stationId": "demo:SK08",
+          "videoTimeSeconds": 2747,
+          "arrivalFrameSeconds": 2747,
+          "departureFrameSeconds": 2747
+        }
+      ],
+      "audio": {
+        "announcementPackId": "tts-default"
+      },
+      "tags": {
+        "dayPeriod": "evening",
+        "season": "autumn"
+      }
+    },
+    {
+      "routeId": "demo:SAKURA",
+      "operatorId": "demo:SJDEMO",
+      "direction": "1",
+      "originStationId": "demo:SK08",
+      "destinationStationId": "demo:SK01",
+      "video": {
+        "provider": "illustrated",
+        "title": "Sakuraura Coast Line — illustrated cab view (inbound, demo)",
+        "creator": "Study Journey (generated illustration)",
+        "sourceUrl": "https://example.invalid/demo",
+        "licenseStatus": "demo",
+        "attributionRequired": false,
+        "durationSeconds": 2774
+      },
+      "stationMarkers": [
+        {
+          "stationId": "demo:SK08",
+          "videoTimeSeconds": 0,
+          "arrivalFrameSeconds": 0,
+          "departureFrameSeconds": 15
+        },
+        {
+          "stationId": "demo:SK07",
+          "videoTimeSeconds": 477,
+          "arrivalFrameSeconds": 477,
+          "departureFrameSeconds": 512
+        },
+        {
+          "stationId": "demo:SK06",
+          "videoTimeSeconds": 883,
+          "arrivalFrameSeconds": 883,
+          "departureFrameSeconds": 918
+        },
+        {
+          "stationId": "demo:SK05",
+          "videoTimeSeconds": 1346,
+          "arrivalFrameSeconds": 1346,
+          "departureFrameSeconds": 1381
+        },
+        {
+          "stationId": "demo:SK04",
+          "videoTimeSeconds": 1617,
+          "arrivalFrameSeconds": 1617,
+          "departureFrameSeconds": 1652
+        },
+        {
+          "stationId": "demo:SK03",
+          "videoTimeSeconds": 2053,
+          "arrivalFrameSeconds": 2053,
+          "departureFrameSeconds": 2088
+        },
+        {
+          "stationId": "demo:SK02",
+          "videoTimeSeconds": 2410,
+          "arrivalFrameSeconds": 2410,
+          "departureFrameSeconds": 2445
+        },
+        {
+          "stationId": "demo:SK01",
+          "videoTimeSeconds": 2754,
+          "arrivalFrameSeconds": 2754,
+          "departureFrameSeconds": 2754
+        }
+      ],
+      "audio": {
+        "announcementPackId": "tts-default"
+      },
+      "tags": {
+        "dayPeriod": "evening",
+        "season": "autumn"
+      }
+    }
+  ]
+}

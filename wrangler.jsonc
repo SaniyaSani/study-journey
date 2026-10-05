@@ -1,0 +1,22 @@
+{
+  // Cloudflare Workers deployment — see docs/DEPLOY.md
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "study-journey",
+  "main": "server/worker.ts",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "vars": {
+    "RAILWAY_PROVIDER": "demo",
+    "ENABLE_ODPT": "true",
+    "ENABLE_GTFS": "true",
+    "ENABLE_DEMO_RAILWAY": "true",
+    "ODPT_API_BASE_URL": "https://api.odpt.org/api/v4",
+  },
+  "observability": { "enabled": true },
+}
