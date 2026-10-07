@@ -12,13 +12,19 @@ SPA fallback). Configuration: `wrangler.jsonc`.
 2. Log in once: `npx wrangler login`.
 3. Deploy: `npm run cf:deploy` (builds the client, then `wrangler deploy`).
    Wrangler prints the URL, e.g. `https://study-journey.<your-subdomain>.workers.dev`.
-4. Optional real data — store secrets (never in `wrangler.jsonc`):
+4. Real data works without any key: with `RAILWAY_PROVIDER=odpt` and no `ODPT_API_KEY`, the
+   keyless public ODPT endpoint (`api-public.odpt.org`) is used — Toei subway lines, Nippori-Toneri
+   Liner and Sakura Tram with timetables, live positions and service information (CC BY 4.0).
+   Note: timetable payloads are 1–2 MB; on the Workers **Free** plan (10 ms CPU per request) the
+   first load of a line can exceed the CPU limit (error 1102). Reload once (the result is cached
+   in the isolate) or use Workers Paid if it happens often.
+5. Optional full ODPT data — store secrets (never in `wrangler.jsonc`):
    ```bash
    npx wrangler secret put ODPT_API_KEY
    ```
    and set plain variables in `wrangler.jsonc → vars` (e.g. `"RAILWAY_PROVIDER": "odpt"`,
    `"ODPT_OPERATORS": "odpt.Operator:TokyoMetro"`), then deploy again.
-5. Optional custom domain: Cloudflare dashboard → Workers & Pages → your Worker →
+6. Optional custom domain: Cloudflare dashboard → Workers & Pages → your Worker →
    Settings → Domains & Routes.
 
 Local preview of the real Worker runtime: `npm run cf:dev` (http://localhost:8787).

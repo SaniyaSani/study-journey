@@ -6,7 +6,9 @@ export function SiteFooter() {
     <footer className="site-foot">
       <div className="site-foot-notices">
         <ServiceNotice en="Data" ja="運行情報">
-          Timetables &amp; live data via the configured provider (ODPT / GTFS / demo).
+          Timetables &amp; live data via the Public Transportation Open Data Center (ODPT) — not
+          guaranteed accurate; please don&apos;t contact operators about this site. Toei data ©
+          Tokyo Metropolitan Bureau of Transportation (CC BY 4.0).
         </ServiceNotice>
         <ServiceNotice en="Window view" ja="車窓" level="warn">
           Route views are recordings or illustrations — never a live camera.

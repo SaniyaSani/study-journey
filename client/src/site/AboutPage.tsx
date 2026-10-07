@@ -73,6 +73,12 @@ export function AboutPage() {
             ))}
           </ul>
           <p className="about-small">
+            The public transportation data used on this site is provided by the Public
+            Transportation Open Data Center (ODPT). Its accuracy and completeness are not
+            guaranteed. Please do not contact railway operators about this site. Toei lines: © Tokyo
+            Metropolitan Bureau of Transportation, CC BY 4.0.
+          </p>
+          <p className="about-small">
             Public Transportation Open Data Center (ODPT) · OpenStreetMap contributors (ODbL) ·
             YouTube IFrame Player API. Fonts: Barlow, Barlow Condensed, DotGothic16, Dela Gothic
             One, Zen Kaku Gothic New, Shippori Mincho, IBM Plex Mono (SIL OFL). Station-style design

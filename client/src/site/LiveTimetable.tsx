@@ -136,7 +136,11 @@ export function LiveTimetable({
                       className="board-type-chip"
                       style={{ ["--svc" as string]: serviceColor(d.trainTypeEn ?? d.trainTypeJa) }}
                     >
-                      {d.trainTypeJa && <span lang="ja">{d.trainTypeJa}</span>}
+                      {d.trainTypeJa &&
+                        d.trainTypeJa !== d.trainTypeEn &&
+                        /[^\u0020-\u007e]/.test(d.trainTypeJa) && (
+                          <span lang="ja">{d.trainTypeJa}</span>
+                        )}
                       <span>{d.trainTypeEn ?? "Train"}</span>
                     </span>
                     <small>{d.trainNumber ? `No. ${d.trainNumber}` : ""}</small>
