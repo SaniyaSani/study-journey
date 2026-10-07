@@ -16,6 +16,9 @@ export interface AppConfig {
   enableDemo: boolean;
   odptApiKey?: string;
   odptBaseUrl: string;
+  /** keyless public ODPT endpoint, used while no ODPT_API_KEY is set */
+  odptPublicBaseUrl: string;
+  enableOdptPublic: boolean;
   odptOperators?: string[];
   gtfsFeedUrl?: string;
   gtfsLocalPath?: string;
@@ -39,6 +42,8 @@ export function readConfig(env: EnvLike): AppConfig {
     enableDemo: bool(env.ENABLE_DEMO_RAILWAY, true),
     odptApiKey: env.ODPT_API_KEY || undefined,
     odptBaseUrl: env.ODPT_API_BASE_URL || "https://api.odpt.org/api/v4",
+    odptPublicBaseUrl: env.ODPT_PUBLIC_API_BASE_URL || "https://api-public.odpt.org/api/v4",
+    enableOdptPublic: bool(env.ENABLE_ODPT_PUBLIC, true),
     odptOperators: list(env.ODPT_OPERATORS),
     gtfsFeedUrl: env.GTFS_FEED_URL || undefined,
     gtfsLocalPath: env.GTFS_LOCAL_PATH || undefined,

@@ -12,8 +12,10 @@
     "run_worker_first": ["/api/*"],
   },
   "vars": {
-    "RAILWAY_PROVIDER": "demo",
+    "RAILWAY_PROVIDER": "odpt",
     "ENABLE_ODPT": "true",
+    // without ODPT_API_KEY the keyless public ODPT endpoint is used (Toei lines, CC BY 4.0)
+    "ENABLE_ODPT_PUBLIC": "true",
     "ENABLE_GTFS": "true",
     "ENABLE_DEMO_RAILWAY": "true",
     "ODPT_API_BASE_URL": "https://api.odpt.org/api/v4",

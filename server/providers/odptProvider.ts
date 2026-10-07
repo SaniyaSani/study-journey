@@ -96,6 +96,13 @@ export interface OdptTrainInformationRaw {
 export interface OdptConfig {
   apiKey?: string;
   baseUrl: string;
+  /**
+   * Use the keyless public endpoint (api-public.odpt.org). It serves the datasets operators
+   * publish under open licences without registration (currently Toei: timetables, stations,
+   * live train positions, service information — CC BY 4.0).
+   */
+  keyless?: boolean;
+  label?: string;
   enabled: boolean;
   /** optional allow-list of operator ids (e.g. odpt.Operator:TokyoMetro) */
   operators?: string[];
@@ -233,19 +240,21 @@ function shortId(id: string): string {
  */
 export class OdptProvider implements RailwayProvider {
   readonly id = "odpt" as const;
-  readonly label = "ODPT";
+  readonly label: string;
   readonly baseDataMode = "timetable" as const;
   private cache = new TtlCache(800);
   private timetables = new Map<string, OdptTrainTimetableRaw>();
 
-  constructor(private cfg: OdptConfig) {}
+  constructor(private cfg: OdptConfig) {
+    this.label = cfg.label ?? (cfg.keyless ? "ODPT open data (no key)" : "ODPT");
+  }
 
   isEnabled(): boolean {
-    return this.cfg.enabled && Boolean(this.cfg.apiKey);
+    return this.cfg.enabled && (Boolean(this.cfg.apiKey) || Boolean(this.cfg.keyless));
   }
   disabledReason(): string | undefined {
     if (!this.cfg.enabled) return "ODPT provider disabled (ENABLE_ODPT=false)";
-    if (!this.cfg.apiKey) return "ODPT_API_KEY is not set";
+    if (!this.cfg.apiKey && !this.cfg.keyless) return "ODPT_API_KEY is not set";
     return undefined;
   }
 
@@ -254,7 +263,9 @@ export class OdptProvider implements RailwayProvider {
     const qs = new URLSearchParams(params);
     const keyless = `${this.cfg.baseUrl.replace(/\/$/, "")}/${type}?${qs}`;
     const res = await this.cache.getOrLoad(keyless, ttlMs, async () => {
-      const url = `${keyless}${qs.toString() ? "&" : ""}acl:consumerKey=${encodeURIComponent(this.cfg.apiKey!)}`;
+      const url = this.cfg.apiKey
+        ? `${keyless}${qs.toString() ? "&" : ""}acl:consumerKey=${encodeURIComponent(this.cfg.apiKey)}`
+        : keyless;
       try {
         if (this.cfg.fetchJson) return await this.cfg.fetchJson(url);
         const r = await fetchWithRetry(url, {
@@ -325,13 +336,13 @@ export class OdptProvider implements RailwayProvider {
   private async timetablesFor(
     railway: string,
     serviceDate: string,
+    railDirection?: string,
   ): Promise<OdptTrainTimetableRaw[]> {
     for (const cal of odptCalendarCandidates(serviceDate)) {
-      const list = await this.get<OdptTrainTimetableRaw[]>(
-        "odpt:TrainTimetable",
-        { "odpt:railway": railway, "odpt:calendar": cal },
-        6 * HOUR,
-      );
+      // filtering by direction halves the payload (matters on small serverless CPU budgets)
+      const params: Record<string, string> = { "odpt:railway": railway, "odpt:calendar": cal };
+      if (railDirection) params["odpt:railDirection"] = railDirection;
+      const list = await this.get<OdptTrainTimetableRaw[]>("odpt:TrainTimetable", params, 6 * HOUR);
       if (list.length) {
         for (const t of list) this.timetables.set(t["owl:sameAs"], t);
         return list;
@@ -351,10 +362,24 @@ export class OdptProvider implements RailwayProvider {
         })();
     const stations = await this.getStations(q.routeId).catch(() => [] as Station[]);
     const names = new Map(stations.map((s) => [s.id, s]));
+    // ascending direction = increasing index in odpt:stationOrder
+    const rail = (await this.railways().catch(() => [] as OdptRailwayRaw[])).find(
+      (r) => r["owl:sameAs"] === railway,
+    );
+    const oIdx = stations.findIndex((s) => s.id === q.originStationId);
+    const dIdx = stations.findIndex((s) => s.id === q.destinationStationId);
+    const railDirection =
+      rail && oIdx >= 0 && dIdx >= 0 && oIdx !== dIdx
+        ? oIdx < dIdx
+          ? rail["odpt:ascendingRailDirection"]
+          : rail["odpt:descendingRailDirection"]
+        : undefined;
     const out: Departure[] = [];
     let anyTimetable = false;
     for (const serviceDate of dates) {
-      const list = await this.timetablesFor(railway, serviceDate);
+      let list = await this.timetablesFor(railway, serviceDate, railDirection);
+      // some feeds label directions differently — fall back to the unfiltered list
+      if (!list.length && railDirection) list = await this.timetablesFor(railway, serviceDate);
       if (list.length) anyTimetable = true;
       for (const raw of list) {
         const trip = normalizeTrainTimetable(raw, serviceDate);

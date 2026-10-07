@@ -55,9 +55,13 @@ export interface PlatformLoaders {
 export function createRegistry(cfg: AppConfig, platform: PlatformLoaders = {}): ProviderRegistry {
   const providers: RailwayProvider[] = [];
 
+  // With a key: the full ODPT API. Without one: the keyless public endpoint (open-licence
+  // datasets only, e.g. Toei) so real timetables work before registration is approved.
+  const keyless = !cfg.odptApiKey && cfg.enableOdptPublic;
   const odpt = new OdptProvider({
     apiKey: cfg.odptApiKey,
-    baseUrl: cfg.odptBaseUrl,
+    baseUrl: keyless ? cfg.odptPublicBaseUrl : cfg.odptBaseUrl,
+    keyless,
     enabled: cfg.enableOdpt,
     operators: cfg.odptOperators,
   });
