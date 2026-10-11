@@ -1,0 +1,114 @@
+{
+ "engine": "faster-whisper",
+ "model": "large-v3",
+ "language": "en",
+ "ref_words": 559,
+ "wer": 0.0572,
+ "wer_spelling_tolerant": 0.0429,
+ "real_substitutions": [
+  [
+   "this",
+   "these"
+  ],
+  [
+   "the",
+   "a"
+  ],
+  [
+   "schoch",
+   "shock"
+  ],
+  [
+   "are",
+   "they're"
+  ],
+  [
+   "point",
+   "0"
+  ]
+ ],
+ "substitutions": 13,
+ "deletions": 7,
+ "insertions": 12,
+ "edge_words_ignored": {
+  "deleted": 2,
+  "inserted": 4
+ },
+ "substitution_pairs": [
+  [
+   "biochemical",
+   "chemical"
+  ],
+  [
+   "these",
+   "the"
+  ],
+  [
+   "this",
+   "these"
+  ],
+  [
+   "tie",
+   "bowtie"
+  ],
+  [
+   "the",
+   "a"
+  ],
+  [
+   "arne",
+   "a"
+  ],
+  [
+   "schoch",
+   "shock"
+  ],
+  [
+   "nfat",
+   "fat"
+  ],
+  [
+   "pass",
+   "bandpass"
+  ],
+  [
+   "are",
+   "they're"
+  ],
+  [
+   "signalling",
+   "signaling"
+  ],
+  [
+   "point",
+   "0"
+  ],
+  [
+   "bits",
+   "bit"
+  ]
+ ],
+ "inserted_runs": [
+  "it's not",
+  "the",
+  "by",
+  "peaks",
+  "an information",
+  "in the",
+  "on",
+  "and",
+  "you"
+ ],
+ "deleted_runs": [
+  "in",
+  "bow",
+  "i",
+  "sorry",
+  "a",
+  "band",
+  "they"
+ ],
+ "longest_missing_runs": [],
+ "unclear_segments": 0,
+ "segments": 44
+}

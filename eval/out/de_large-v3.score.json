@@ -1,0 +1,216 @@
+{
+ "engine": "faster-whisper",
+ "model": "large-v3",
+ "language": "de",
+ "ref_words": 587,
+ "wer": 0.1158,
+ "wer_spelling_tolerant": 0.0733,
+ "real_substitutions": [
+  [
+   "kein",
+   "3"
+  ],
+  [
+   "ein",
+   "1"
+  ],
+  [
+   "da",
+   "ja"
+  ],
+  [
+   "einstein",
+   "plötzlich"
+  ],
+  [
+   "plötzlich",
+   "einstein"
+  ],
+  [
+   "plant",
+   "planck"
+  ],
+  [
+   "auch",
+   "funktionierte"
+  ],
+  [
+   "plant",
+   "planck"
+  ]
+ ],
+ "substitutions": 33,
+ "deletions": 25,
+ "insertions": 10,
+ "edge_words_ignored": {
+  "deleted": 19,
+  "inserted": 14
+ },
+ "substitution_pairs": [
+  [
+   "kein",
+   "3"
+  ],
+  [
+   "dreiviertel",
+   "viertel"
+  ],
+  [
+   "ein",
+   "1"
+  ],
+  [
+   "lichtpackete",
+   "lichtpakete"
+  ],
+  [
+   "lichtpackete",
+   "lichtpakete"
+  ],
+  [
+   "releativitätstheorie",
+   "relativitätstheorie"
+  ],
+  [
+   "soetwas",
+   "was"
+  ],
+  [
+   "existens",
+   "existenz"
+  ],
+  [
+   "hypothese",
+   "atomhypothese"
+  ],
+  [
+   "darum",
+   "rum"
+  ],
+  [
+   "puhh",
+   "puh"
+  ],
+  [
+   "ein",
+   "eine"
+  ],
+  [
+   "da",
+   "ja"
+  ],
+  [
+   "desswegen",
+   "deswegen"
+  ],
+  [
+   "das",
+   "dass"
+  ],
+  [
+   "plank",
+   "planck"
+  ],
+  [
+   "entwickelt",
+   "weiterentwickelt"
+  ],
+  [
+   "erzähle",
+   "erzählte"
+  ],
+  [
+   "einstein",
+   "plötzlich"
+  ],
+  [
+   "plötzlich",
+   "einstein"
+  ],
+  [
+   "realtion",
+   "relation"
+  ],
+  [
+   "der",
+   "er"
+  ],
+  [
+   "plant",
+   "planck"
+  ],
+  [
+   "das",
+   "dass"
+  ],
+  [
+   "sich",
+   "ich"
+  ],
+  [
+   "hab",
+   "habe"
+  ],
+  [
+   "darauf",
+   "daraus"
+  ],
+  [
+   "komsiches",
+   "komisches"
+  ],
+  [
+   "das",
+   "dass"
+  ],
+  [
+   "geschwindkeit",
+   "geschwindigkeit"
+  ],
+  [
+   "liegend",
+   "naheliegend"
+  ],
+  [
+   "auch",
+   "funktionierte"
+  ],
+  [
+   "plant",
+   "planck"
+  ]
+ ],
+ "inserted_runs": [
+  "gleich",
+  "so",
+  "da",
+  "sie",
+  "das kann ich",
+  "mir",
+  "und",
+  "sich"
+ ],
+ "deleted_runs": [
+  "halbes lichtpacket es gibt",
+  "ein",
+  "atom",
+  "ein",
+  "eben",
+  "weiter",
+  "das ist",
+  "das hat",
+  "da wird es jetzt",
+  "wenn es",
+  "jetzt",
+  "nahe",
+  "funtkionierte auch",
+  "der",
+  "also"
+ ],
+ "longest_missing_runs": [
+  "halbes lichtpacket es gibt",
+  "da wird es jetzt"
+ ],
+ "unclear_segments": 0,
+ "segments": 52
+}
